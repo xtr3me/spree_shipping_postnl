@@ -1,7 +1,8 @@
 SpreeShippingPostnl
 ===================
 
-Introduction goes here.
+Spree shipping calculator for PostNL
+This gem provides a basic shipping calculator for PostNL packages and letters to be send within the Netherlands.
 
 Installation
 ------------
