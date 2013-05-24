@@ -3,13 +3,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_shipping_postnl'
   s.version     = '2.0.0'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.summary     = 'Spree shipping calculator for PostNL'
+  s.description = 'This gem provides a basic shipping calculator for PostNL packages and letters to be send within the Netherlands'
   s.required_ruby_version = '>= 1.9.3'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  s.author    = 'Sjors Baltus'
+  s.email     = 'spree_gems@sjorsbaltus.nl'
+  s.homepage  = 'http://www.sjorsbaltus.nl'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
