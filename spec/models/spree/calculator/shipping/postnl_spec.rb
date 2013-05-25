@@ -40,23 +40,23 @@ module Spree
       
       context "compute" do
         it "should compute amount correctly when using an empty package" do
-          subject.compute(empty_package).round(3).should == 0.0
+          subject.compute_package(empty_package).round(3).should == 0.0
         end
         
         it "should compute amount correctly when using a 50g letter package" do
-          subject.compute(letter_50g).round(3).should == 1.08
+          subject.compute_package(letter_50g).round(3).should == 1.08
         end
         
         it "should compute amount correctly when using a 200g letter package" do
-           subject.compute(letter_200g).round(3).should == 2.16
+           subject.compute_package(letter_200g).round(3).should == 2.16
         end
         
         it "should compute amount correctly when using a 160g box sized package" do
-           subject.compute(box_sized).round(3).should == 6.75
+           subject.compute_package(box_sized).round(3).should == 6.75
         end        
         
         it "should compute amount correctly when using a oversized package" do
-          subject.compute(oversized).round(3).should == 6.75
+          subject.compute_package(oversized).round(3).should == 6.75
         end        
       end
       

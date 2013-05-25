@@ -15,6 +15,7 @@ module Spree
       preference :postnl_box_20000g, :float, :default => 12.40
       preference :postnl_box_30000g, :float, :default => 12.40
       preference :oversized_class, :string, :default => 'postnl_box_2000g'
+      preference :default_weight, :integer, :default => 0
 
       attr_accessible :preferred_postnl_letter_20g,
                       :preferred_postnl_letter_50g,
@@ -27,7 +28,8 @@ module Spree
                       :preferred_postnl_box_10000g,
                       :preferred_postnl_box_20000g,
                       :preferred_postnl_box_30000g,
-                      :preferred_oversized_class
+                      :preferred_oversized_class,
+                      :preferred_default_weight
 
   def self.description
     Spree.t :postnl
@@ -37,7 +39,7 @@ module Spree
     super
   end
 
-  def compute(package)
+  def compute_package(package)
     content_items = package.contents
     return 0 unless content_items.size > 0
 

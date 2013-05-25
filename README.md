@@ -1,4 +1,4 @@
-SpreeShippingPostnl
+Spree Shipping Postnl
 ===================
 
 Spree shipping calculator for PostNL
