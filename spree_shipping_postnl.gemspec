@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_shipping_postnl'
-  s.version     = '2.0.1'
+  s.version     = '2.0.2'
   s.summary     = 'Spree shipping calculator for PostNL'
   s.description = 'This gem provides a basic shipping calculator for PostNL packages and letters to be send within the Netherlands'
   s.required_ruby_version = '>= 1.9.3'

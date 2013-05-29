@@ -16,6 +16,9 @@ module Spree
       preference :postnl_box_30000g, :float, :default => 12.40
       preference :oversized_class, :string, :default => 'postnl_box_2000g'
       preference :default_weight, :integer, :default => 0
+      preference :default_height, :integer, :default => 0
+      preference :default_width, :integer, :default => 0
+      preference :default_depth, :integer, :default => 0
 
       attr_accessible :preferred_postnl_letter_20g,
                       :preferred_postnl_letter_50g,
@@ -29,7 +32,10 @@ module Spree
                       :preferred_postnl_box_20000g,
                       :preferred_postnl_box_30000g,
                       :preferred_oversized_class,
-                      :preferred_default_weight
+                      :preferred_default_weight,
+                      :preferred_default_height,
+                      :preferred_default_width,
+                      :preferred_default_depth                     
 
   def self.description
     Spree.t :postnl
@@ -83,7 +89,7 @@ module Spree
   def total_weight(content_items)
     weight = 0
     content_items.each do |item|
-      weight += item.quantity * (item.variant.weight || self.preferred_default_weight)
+      weight += item.quantity * weight(item.variant.weight)
     end
     weight
   end
@@ -91,11 +97,7 @@ module Spree
   def total_volume(content_items)
     volume = 0
     content_items.each do |item|
-      volume += item.quantity * (
-          (item.variant.height ? item.variant.height : 1) * 
-          (item.variant.width ? item.variant.width : 1) * 
-          (item.variant.depth ? item.variant.depth : 1)
-	)
+      volume += item.quantity * (height(item.variant.height) * width(item.variant.width) * depth(item.variant.depth))
     end
     volume
   end
@@ -103,19 +105,39 @@ module Spree
   def max_dimensions(content_items)
     dimensions = { heigth: 0, width: 0, depth: 0 }
     content_items.each do |item|
-      if dimensions[:heigth] < (item.variant.height ? item.variant.height : 1)
-        dimensions[:heigth] = (item.variant.height ? item.variant.height : 1)
+      if dimensions[:heigth] < height(item.variant.height)
+        dimensions[:heigth] = height(item.variant.height)
       end
 
-      if dimensions[:width] < (item.variant.width ? item.variant.width : 1)
-        dimensions[:width] = (item.variant.width ? item.variant.width : 1)
+      if dimensions[:width] < width(item.variant.width)
+        dimensions[:width] = width(item.variant.width)
       end
 
-      if dimensions[:depth] < (item.variant.depth ? item.variant.depth : 1)
-        dimensions[:depth] = (item.variant.depth ? item.variant.depth : 1)
+      if dimensions[:depth] < depth(item.variant.depth)
+        dimensions[:depth] = depth(item.variant.depth)
       end
     end
     dimensions
+  end
+  
+  def height(size)
+    size_or_default(size, 'height')    
+  end
+  
+  def width(size)
+    size_or_default(size, 'width')
+  end
+  
+  def depth(size)
+    size_or_default(size, 'depth')
+  end
+  
+  def weight(size)
+    size_or_default(size, 'weight')
+  end
+  
+  def size_or_default(size, type)
+    (size ? size : self.send("preferred_default_#{type}".to_sym))
   end
 
     end
