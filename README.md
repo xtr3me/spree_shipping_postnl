@@ -2,6 +2,8 @@ Spree Shipping Postnl
 ===================
 [![Build Status](https://travis-ci.org/xtr3me/spree_shipping_postnl.png)](https://travis-ci.org/xtr3me/spree_shipping_postnl)
 [![Code Climate](https://codeclimate.com/github/xtr3me/spree_shipping_postnl.png)](https://codeclimate.com/github/xtr3me/spree_shipping_postnl)
+[![Coverage Status](https://coveralls.io/repos/xtr3me/spree_shipping_postnl/badge.png)](https://coveralls.io/r/xtr3me/spree_shipping_postnl)
+[![Dependency Status](https://gemnasium.com/xtr3me/spree_shipping_postnl.png)](https://gemnasium.com/xtr3me/spree_shipping_postnl)
 
 Spree shipping calculator for PostNL
 This gem provides a basic shipping calculator for PostNL packages and letters to be send within the Netherlands.
