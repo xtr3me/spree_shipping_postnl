@@ -44,11 +44,11 @@ module Spree
         end
         
         it "should compute amount correctly when using a 50g letter package" do
-          subject.compute_package(letter_50g).round(3).should == 1.08
+          subject.compute_package(letter_50g).round(3).should == 1.20
         end
         
         it "should compute amount correctly when using a 200g letter package" do
-           subject.compute_package(letter_200g).round(3).should == 2.16
+           subject.compute_package(letter_200g).round(3).should == 2.40
         end
         
         it "should compute amount correctly when using a 160g box sized package" do
