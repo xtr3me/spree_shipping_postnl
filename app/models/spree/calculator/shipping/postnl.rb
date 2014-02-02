@@ -7,7 +7,7 @@ module Spree
       preference :postnl_letter_50g, :float, :default => 1.28
       preference :postnl_letter_100g, :float, :default => 1.92
       preference :postnl_letter_250g, :float, :default => 2.56
-      #preference :postnl_letter_500g, :float, :default => 3.84
+      preference :postnl_letter_500g, :float, :default => 3.84
       preference :postnl_letter_2000g, :float, :default => 3.84
       preference :postnl_box_2000g, :float, :default => 6.75
       preference :postnl_box_5000g, :float, :default => 6.75
