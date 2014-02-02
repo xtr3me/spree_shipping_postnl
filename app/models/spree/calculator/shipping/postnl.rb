@@ -3,17 +3,17 @@ require_dependency 'spree/shipping_calculator'
 module Spree
   module Calculator::Shipping
     class Postnl < ShippingCalculator
-      preference :postnl_letter_20g, :float, :default => 0.60
-      preference :postnl_letter_50g, :float, :default => 1.20
-      preference :postnl_letter_100g, :float, :default => 1.80
-      preference :postnl_letter_250g, :float, :default => 2.40
-      preference :postnl_letter_500g, :float, :default => 3.00
-      preference :postnl_letter_2000g, :float, :default => 3.60
+      preference :postnl_letter_20g, :float, :default => 0.64
+      preference :postnl_letter_50g, :float, :default => 1.28
+      preference :postnl_letter_100g, :float, :default => 1.92
+      preference :postnl_letter_250g, :float, :default => 2.56
+      #preference :postnl_letter_500g, :float, :default => 3.84
+      preference :postnl_letter_2000g, :float, :default => 3.84
       preference :postnl_box_2000g, :float, :default => 6.75
       preference :postnl_box_5000g, :float, :default => 6.75
       preference :postnl_box_10000g, :float, :default => 6.75
-      preference :postnl_box_20000g, :float, :default => 12.40
-      preference :postnl_box_30000g, :float, :default => 12.40
+      preference :postnl_box_20000g, :float, :default => 12.90
+      preference :postnl_box_30000g, :float, :default => 12.90
       preference :oversized_class, :string, :default => 'postnl_box_2000g'
       preference :default_weight, :integer, :default => 0
       preference :default_height, :integer, :default => 0
