@@ -17,6 +17,7 @@ ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
 require 'rspec/rails'
+require 'rspec/active_model/mocks'
 require 'database_cleaner'
 require 'ffaker'
 
@@ -69,14 +70,21 @@ RSpec.configure do |config|
   end
 
   # Before each spec check if it is a Javascript test and switch between using database transactions or not where necessary.
-  config.before :each do
-    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
-    DatabaseCleaner.start
-  end
+  #config.before :each do
+  #  DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+  #  DatabaseCleaner.start
+  #end
 
   # After each spec clean the database.
-  config.after :each do
-    DatabaseCleaner.clean
+  #config.after :each do
+  #  DatabaseCleaner.clean
+  #end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.cleaning do
+      example.run
+    end
   end
 
   config.fail_fast = ENV['FAIL_FAST'] || false
