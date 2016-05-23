@@ -12,8 +12,8 @@ module Spree
         build(:inventory_unit, variant: variant, order: order)
       end
 
-      let(:country)  { FactoryGirl.create(:country, :name => "Nederland", :iso => "NL23123123") }
-      let(:address)  { mock_model(Spree::Address, :country => country, :state_name => nil, :city => "Amsterdam", :zipcode => "1111AA", :state => nil) }
+      let(:country)  { FactoryGirl.create(:country, :name => "Nederland", :iso => "NL12") }
+      let(:address)  { mock_model(Spree::Address, :country => country, :state_name => nil, :city => "Amsterdam", :zipcode => "1111 AA", :state => nil) }
       let(:order)    { mock_model(Spree::Order, :ship_address => address) }
       let(:variant1) { build(:variant, { price: 10, width: 20, height: 30, depth: 8, weight: 40 }) }
       let(:variant2) { build(:variant, { price: 10, width: 20, height: 30, depth: 8, weight: 60 }) }
@@ -64,19 +64,19 @@ module Spree
         end
         
         it "should compute amount correctly when using a 50g letter package" do
-          subject.compute_package(letter_50g).round(3).should == 1.28
+          subject.compute_package(letter_50g).round(3).should == 1.46
         end
         
         it "should compute amount correctly when using a 200g letter package" do
-           subject.compute_package(letter_200g).round(3).should == 2.56
+           subject.compute_package(letter_200g).round(3).should == 2.92
         end
         
         it "should compute amount correctly when using a 160g box sized package" do
-           subject.compute_package(box_sized).round(3).should == 6.75
+           subject.compute_package(box_sized).round(3).should == 6.95
         end        
         
         it "should compute amount correctly when using a oversized package" do
-          subject.compute_package(oversized).round(3).should == 6.75
+          subject.compute_package(oversized).round(3).should == 6.95
         end        
       end
       
