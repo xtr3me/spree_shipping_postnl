@@ -60,29 +60,29 @@ module Spree
       
       context "compute" do
         it "should compute amount correctly when using an empty package" do
-          subject.compute_package(empty_package).round(3).should == 0.0
+          expect(subject.compute_package(empty_package).round(3)).to eq(0.0)
         end
         
         it "should compute amount correctly when using a 50g letter package" do
-          subject.compute_package(letter_50g).round(3).should == 1.46
+          expect(subject.compute_package(letter_50g).round(3)).to eq(1.46)
         end
         
         it "should compute amount correctly when using a 200g letter package" do
-           subject.compute_package(letter_200g).round(3).should == 2.92
+           expect(subject.compute_package(letter_200g).round(3)).to eq(2.92)
         end
         
         it "should compute amount correctly when using a 160g box sized package" do
-           subject.compute_package(box_sized).round(3).should == 6.95
+           expect(subject.compute_package(box_sized).round(3)).to eq(6.95)
         end        
         
         it "should compute amount correctly when using a oversized package" do
-          subject.compute_package(oversized).round(3).should == 6.95
+          expect(subject.compute_package(oversized).round(3)).to eq(6.95)
         end        
       end
       
       context "i18e" do
         it "should display PostNL when using the en locale" do
-          subject.description.should == "PostNL"
+          expect(subject.description).to eq("PostNL")
         end
       end
     end
