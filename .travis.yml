@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 2.1
   - 2.2
+before_install:
+  - gem install bundler
 script:
   - bundle exec rake test_app
   - bundle exec rake spec
